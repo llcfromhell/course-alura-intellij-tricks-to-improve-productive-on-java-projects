@@ -1,7 +1,7 @@
 package br.com.alura.bytebank.registrador;
 
 import br.com.alura.bytebank.model.Pagamento;
-import br.com.alura.bytebank.model.Tipo;
+import br.com.alura.bytebank.validador.ValidaPagamento;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,20 +12,7 @@ public class RegistroDePagamento {
 
     public void registra(List<Pagamento> pagamentos) {
         for (Pagamento pagamento : pagamentos) {
-            verificaTipo(pagamento);
             salva(pagamento);
-        }
-    }
-
-    private void verificaTipo(Pagamento pagamento) {
-        if (pagamento.getTipo().equals(Tipo.CREDITO)) {
-            double valorComAcrescimo = pagamento.getValor() * 1.02;
-            pagamento.setValor(valorComAcrescimo);
-        }
-
-        if (pagamento.getTipo().equals(Tipo.DEBITO)) {
-            double valorComAcrescimo = pagamento.getValor() * 1.001;
-            pagamento.setValor(valorComAcrescimo);
         }
     }
 
